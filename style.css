@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -53,7 +53,7 @@ nav a {
     transition: .5s;
 }
 
-nav a:hover ,
+nav a:hover,
 nav a.active {
     color: var(--main-color);
 }
@@ -61,6 +61,7 @@ nav a.active {
 #menu-icon {
     font-size: 4rem;
     display: none;
+    cursor: pointer;
 }
 
 section {
@@ -79,37 +80,39 @@ section.active {
     opacity: 1;
     overflow: auto;
 }
+
 .home {
     display: flex;
     align-items: center;
     gap: 5rem;
 }
 
-.home-detail h1{
+.home-detail h1 {
     font-size: clamp(3.5rem, 10vw, 5.5rem);
 }
 
-.home-detail h2{
+.home-detail h2 {
     display: inline-block;
-    font-size: 3.2rem;
+    font-size: clamp(2.5rem, 6vw, 3.2rem);
     margin-top: -1rem;
 }
 
-.home-detail h2 span{
+.home-detail h2 span {
     position: relative;
     display: inline-block;
     color: transparent;
     -webkit-text-stroke: .07rem var(--main-color);
     animation: display-text 16s linear infinite;
-    animation-delay: calc(-4s *var(--i));
+    animation-delay: calc(-4s * var(--i));
 }
 
 @keyframes display-text {
-    25%,100% {
+    25%, 100% {
         display: none;
     }
 }
-.home-detail h2 span::before{
+
+.home-detail h2 span::before {
     content: attr(data-text);
     position: absolute;
     width: 0;
@@ -121,23 +124,22 @@ section.active {
 }
 
 @keyframes fill-text {
-    10%,
-    100% {
+    10%, 100% {
         width: 0;
     }
-    70%,90% {
+    70%, 90% {
         width: 100%;
     }
 }
 
-.home-detail p{
-    font-size: 1.6rem;
+.home-detail p {
+    font-size: clamp(1.4rem, 3vw, 1.6rem);
     margin: 1rem 0.2rem;
 }
 
-.home-detail .btn-sci{
+.home-detail .btn-sci {
     display: flex;
-    align-items: center;    
+    align-items: center;
 }
 
 .btn {
@@ -175,7 +177,7 @@ section.active {
     box-shadow: 0 0 1rem var(--main-color);
 }
 
-.home-img .img-box{
+.home-img .img-box {
     position: relative;
     width: 32vw;
     height: 32vw;
@@ -188,7 +190,7 @@ section.active {
 }
 
 .home-img .img-box::before,
-.home-img .img-box::after{
+.home-img .img-box::after {
     content: '';
     position: absolute;
     width: 50rem;
@@ -197,7 +199,8 @@ section.active {
     transform: rotate(0deg);
     animation: rotate-border 10s linear infinite;
 }
-.home-img .img-box::after{
+
+.home-img .img-box::after {
     animation-delay: -5s;
 }
 
@@ -207,7 +210,7 @@ section.active {
     }
 }
 
-.home-img .img-box .img-item{
+.home-img .img-box .img-item {
     position: relative;
     width: 100%;
     height: 100%;
@@ -245,7 +248,7 @@ section.active {
     gap: 2rem;
 }
 
-.Services-countainer .Services-box{
+.Services-countainer .Services-box {
     padding: 3rem 2.5rem;
     background: var(--second-bg-color);
     border: 2rem solid var(--second-bg-color);
@@ -284,6 +287,7 @@ section.active {
 .Services-box:hover .icon a {
     background: var(--main-color);
 }
+
 .Services-box .icon a i {
     font-size: 3rem;
     color: var(--bg-color);
@@ -291,9 +295,9 @@ section.active {
 
 .Services-box .icon a:hover i {
     transform: rotate(300deg);
-} 
+}
 
-.Services-box h3{
+.Services-box h3 {
     font-size: 3rem;
     margin: .5rem 0 2rem;
     transition: .5s;
@@ -303,6 +307,113 @@ section.active {
     color: var(--main-color);
 }
 
-.Services-box p{
+.Services-box p {
     font-size: 1.6rem;
+}
+
+/* التصميم العام للشاشات الكبيرة (أجهزة الكمبيوتر) */
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+/* التصميم لأجهزة التابلت */
+@media (max-width: 991px) {
+    header {
+        padding: 2rem 3%;
+    }
+
+    section {
+        padding: 10rem 3% 2rem;
+    }
+
+    .home {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .home-img .img-box {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .Services-countainer {
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+}
+
+/* التصميم لأجهزة الموبايل */
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        display: none;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
+
+    .home {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-detail h1 {
+        font-size: 5rem;
+    }
+
+    .home-detail h2 {
+        font-size: 2.6rem;
+    }
+
+    .home-img .img-box {
+        width: 70vw;
+        height: 70vw;
+    }
+
+    .Services-countainer {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+}
+
+/* التصميم لأجهزة الموبايل الصغيرة */
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+
+    .home-detail h1 {
+        font-size: 4rem;
+    }
+
+    .home-detail h2 {
+        font-size: 2.2rem;
+    }
+
+    .home-img .img-box {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .Services-countainer {
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
 }
