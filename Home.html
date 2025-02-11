@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الطلاب</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>نموذج تسجيل الطلاب</h2>
+        
+        <!-- 🔥 مكان الرسالة اللي هتظهر -->
+        <div id="message"></div> 
+
+        <form id="studentForm">
+            <input type="text" name="name" id="name" placeholder="الاسم" required><br>
+            <input type="email" name="email" id="email" placeholder="البريد الإلكتروني" required><br>
+            <input type="tel" name="phone" id="phone" placeholder="رقم الهاتف" required><br>
+            <button type="submit">إرسال</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("studentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+            
+            var formData = new FormData(this); // تخزين البيانات في فورم
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "save_student.php", true);
+            xhr.onload = function() {
+                document.getElementById("message").innerHTML = this.responseText; // عرض الرد في الرسالة
+                
+                // ✅ **إذا كانت العملية ناجحة، مسح البيانات من الفورم**
+                if (this.responseText.includes("✅")) {
+                    document.getElementById("studentForm").reset();
+                }
+            };
+            xhr.send(formData); // إرسال البيانات بدون تحديث الصفحة
+        });
+    </script>
+
+</body>
+</html>
